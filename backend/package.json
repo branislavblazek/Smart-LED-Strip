@@ -1,0 +1,17 @@
+{
+    "name": "Smart-LED-Stripe_Backend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/branislavblazek/Smart-LED-Strip.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "homepage": "https://github.com/branislavblazek/Smart-LED-Strip#readme",
+    "dependencies": {
+        "express": "^4.17.1"
+    }
+}

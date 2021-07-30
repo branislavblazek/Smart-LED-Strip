@@ -25,12 +25,12 @@ Test yours connection with:
 Set static IP (to prevent auto-assign IP for RPi)
 ```bash
   sudo nano /etc/dhcpcd.conf
-  >>> (nano editor)
+  >> (nano editor)
   interface wlan0
   static ip_address=192.168.0.222/24
   static routers=192.168.0.1
   static domain_name_servers=192.168.0.1
-  >>>
+  >>
   sudo reboot
 ```
 ### 1.c. Install library for USB controlling

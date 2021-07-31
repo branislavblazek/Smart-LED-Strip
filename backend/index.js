@@ -2,10 +2,11 @@ const express = require('express');
 require('dotenv').config()
 const { ERROR } = require('./messages');
 const { requestLog } = require('./logger');
+const { sendRequest } = require('./utils/requestUtils');
 
 const app = express();
 
-const port = process.env.APP_PORT || 3001;
+const port = process.env.PORT || 3001;
 app.listen(port, () => {
     console.log(`Listening on port ${port}!`);
 });
@@ -13,22 +14,17 @@ app.listen(port, () => {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({
     strict: true,
-    type: 'application/json',
-    verify: (req, res, buf) => {
-        try {
-            JSON.parse(buf)
-        } catch (e) {
-            res.status(404).send({ message: ERROR.INVALID_PARAM });
-        }
-    }
+    type: 'application/json'
 }));
+
+app.use((err, req, res, next) => {
+    if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
+        sendRequest(res.status(400), ERROR.INVALID_BODY);
+    } else next();
+});
 
 app.use(requestLog);
 
 app.use('/api/login', require('./routes/login'));
 
-app.use((req, res) => {
-    res.status(404).send({
-        error: 'Not found',
-    });
-});
+app.use((req, res) => sendRequest(res.status(404), ERROR.NOT_FOUND));

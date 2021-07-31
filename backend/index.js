@@ -1,9 +1,11 @@
 const express = require('express');
+require('dotenv').config()
 const { ERROR } = require('./messages');
+const { requestLog } = require('./logger');
 
 const app = express();
 
-const port = process.env.APP_PORT || 3000;
+const port = process.env.APP_PORT || 3001;
 app.listen(port, () => {
     console.log(`Listening on port ${port}!`);
 });
@@ -20,6 +22,8 @@ app.use(express.json({
         }
     }
 }));
+
+app.use(requestLog);
 
 app.use('/api/login', require('./routes/login'));
 

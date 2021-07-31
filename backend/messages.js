@@ -4,5 +4,8 @@ module.exports = {
     },
     ERROR: {
         INVALID_PARAM: 'Invalid parameter!',
+        WRONG_PIN: 'Wrong PIN!',
+        WRITE_TOKEN: 'Unexpected problem with writing token!',
+        LOGIN: 'Problem with Login!',
     }
 }

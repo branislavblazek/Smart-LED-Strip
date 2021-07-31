@@ -19,6 +19,7 @@ router.post('', (req, res) => {
                 res.send({
                     message: SUCCESSFUL.LOGIN,
                     token,
+                    expiresIn: process.env.TOKEN_EXPIRATION,
                 });
             })
             .catch(() => {

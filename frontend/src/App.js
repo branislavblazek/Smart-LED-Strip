@@ -5,7 +5,7 @@ import { getAppEnv, getToken } from './store/selectors/appSelectors';
 import { ENVIRONMENT } from './apiLinks';
 import { APP_ACTIONS, AUTH_ACTIONS } from './store/actions';
 import { ENV_FILE_NAME } from './constants';
-import Loading from './components/Loading/Loading';
+import Login from './containers/Test/Login/Login';
 import Test from './containers/Test/Test';
 import './App.scss';
 
@@ -27,19 +27,23 @@ const App = () => {
     return null;
   }, [dispatch, env, token]);
 
-  const renderLayout = () => {
-    if (!token) return <Loading />;
-    return (
-      <Switch>
-        <Route path="/hello/" component={Test} />
-        <Redirect to="/hello/" />
-      </Switch>
-    );
-  };
+  const renderLogin = () => (
+    <Switch>
+      <Route path="/login/" component={Login} />
+      <Redirect to="/login/" />
+    </Switch>
+  );
+
+  const renderApp = () => (
+    <Switch>
+      <Route path="/dashboard/" component={Test} />
+      <Redirect to="/dashbord/" />
+    </Switch>
+  );
 
   return (
     <div className="App">
-      {renderLayout()}
+      {token ? renderApp() : renderLogin()}
     </div>
   );
 };

@@ -1,0 +1,33 @@
+@import '../../styles/variables.scss';
+
+.PinPad {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 5%;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+
+    .PinKey {
+        position: relative;
+        border: 1px solid $color-white;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        color: $color-white;
+        cursor: pointer;
+        background-color: $color-seal;
+        transition: background-color .4s;
+
+        &:hover {
+            background-color: $color-seal-hover;
+        }
+
+        p {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: $font-size-large;
+        }
+    }
+}

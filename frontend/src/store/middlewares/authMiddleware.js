@@ -20,8 +20,6 @@ const authMiddleware = store => next => action => {
           type: AUTH_ACTIONS.CHECK_KEY,
           payload: { key: cookieToken },
         });
-      } else {
-        store.dispatch({ type: AUTH_ACTIONS.NEW_KEY });
       }
       return next(action);
     }

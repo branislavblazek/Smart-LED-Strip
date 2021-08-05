@@ -1,3 +1,5 @@
+@import '../../../styles/variables.scss';
+
 .Login {
     height: 100vh;
     overflow: hidden;
@@ -9,5 +11,29 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+
+        .Message {
+            color: $color-white;
+            text-align: center;
+        }
+
+        .Dots {
+            text-align: center;
+            margin-top: 16px;
+            height: 24px;
+
+            span {
+                display: inline-block;
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                background-color: $color-white;
+                margin-right: 8px;
+            }
+        }
+
+        .PinPad {
+            margin: 40px auto 0 auto;
+        }
     }
 }

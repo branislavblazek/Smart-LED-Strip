@@ -4,9 +4,10 @@ export const AUTH_ACTIONS = {
     CHECK_KEY: 'auth/CHECK_KEY',
     CHECK_KEY_SUCCESS: 'auth/CHECK_KEY_SUCCESS',
     CHECK_KEY_ERROR: 'auth/CHECK_KEY_ERROR',
-    NEW_KEY: 'auth/NEW_KEY',
-    NEW_KEY_SUCCESS: 'auth/NEW_KEY_SUCCESS',
-    NEW_KEY_ERROR: 'auth/NEW_KEY_ERROR',
+    LOGIN: 'auth/LOGIN',
+    LOGIN_SUCCESS: 'auth/LOGIN_SUCCESS',
+    LOGIN_ERROR: 'auth/LOGIN_ERROR',
+    UPDATE_PIN: 'auth/UPDATE_PIN',
 };
 
 export const APP_ACTIONS = {

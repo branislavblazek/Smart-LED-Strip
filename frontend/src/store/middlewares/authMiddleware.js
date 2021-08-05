@@ -24,20 +24,20 @@ const authMiddleware = store => next => action => {
       return next(action);
     }
 
-    case AUTH_ACTIONS.NEW_KEY: {
+    case AUTH_ACTIONS.LOGIN: {
       postRequest({
         path: authLinks.login(),
         options: { authorization: true },
       })
         .then(res => {
           store.dispatch({
-            type: AUTH_ACTIONS.NEW_KEY_SUCCESS,
+            type: AUTH_ACTIONS.LOGIN_SUCCESS,
             payload: { token: res.token || 'ahoj123' },
           });
           setCookie(XApi, res.token || 'ahoj123');
         })
         .catch(() => {
-          store.dispatch({ type: AUTH_ACTIONS.NEW_KEY_ERROR });
+          store.dispatch({ type: AUTH_ACTIONS.LOGIN_ERROR });
         });
       return next(action);
     }
@@ -56,7 +56,6 @@ const authMiddleware = store => next => action => {
         })
         .catch(() => {
           store.dispatch({ type: AUTH_ACTIONS.CHECK_KEY_ERROR });
-          store.dispatch({ type: AUTH_ACTIONS.NEW_KEY });
         });
       return next(action);
     }

@@ -18,6 +18,7 @@
         background-color: $color-seal;
         transition: background-color .4s;
 
+        &.active,
         &:hover {
             background-color: $color-seal-hover;
         }

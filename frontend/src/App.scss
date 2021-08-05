@@ -1,0 +1,57 @@
+@import './styles/fonts.scss';
+@import './styles/variables.scss';
+
+.App {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-size: $font-size-main;
+    // color: $color-gray-dark-extra;
+
+    * {
+        box-sizing: border-box;
+    }
+
+    h1, h2, p, span, a {
+        margin: 0;
+        padding: 0;
+    }
+
+    span, button {
+        font-size: 15px;
+    }
+
+    input,
+    textarea,
+    button,
+    select,
+    a {
+        -webkit-tap-highlight-color: $color-transparent;
+    }
+
+    @media (max-width: $breakpoint-mobiles) {
+        .no-mobile {
+            display: none;
+        }
+    }
+
+    @media (min-width: $breakpoint-mobiles) {
+        .only-mobile {
+            display: none;
+        }
+    }
+
+    @media (max-width: $breakpoint-tablets) {
+        .no-tablet,
+        .only-desktop {
+            display: none;
+        }
+    }
+
+    @media (min-width: $breakpoint-tablets) {
+        .no-desktop,
+        .only-tablet {
+            display: none;
+        }
+    }
+}

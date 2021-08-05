@@ -1,0 +1,21 @@
+@import '../../styles/variables.scss';
+
+.Button {
+  height: 100%;
+  min-height: 46px;
+  position: relative;
+  border: 1px solid rgba(0,0,0,0);
+  border-radius: 6px;
+  font-weight: bold;
+  transition: border 0.3s, background-color 0.3s;
+  cursor: pointer;
+
+  &:focus { outline: none; }
+
+  span {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

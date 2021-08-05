@@ -1,0 +1,51 @@
+@import '../../styles/variables.scss';
+
+.InputBox {
+  display: flex;
+  width: 100%;
+  padding: 8px;
+
+  .InputIcon {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 12px;
+  }
+
+  .Input {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    min-width: 80%;
+    font-family: $font-main;
+    font-size: $font-size-main;
+    font-weight: 500;
+    color: $color-black;
+    border: none;
+    padding: 8px;
+
+    &:active {
+      color: $color-black;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      font-weight: 300;
+    }
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  .removeAllText {
+    display: flex;
+    vertical-align: middle;
+    cursor: pointer;
+    width: 20px;
+  }
+}
+
+

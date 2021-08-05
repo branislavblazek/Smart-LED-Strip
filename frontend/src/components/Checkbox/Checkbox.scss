@@ -1,0 +1,70 @@
+@import '../../styles/variables.scss';
+
+.CheckBoxWrap {
+  display: grid;
+  grid-template-columns: 32px auto;
+  align-items: center;
+
+  &.fullClick {
+    cursor: pointer;
+  }
+
+  .CheckBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: unset !important;
+    position: relative;
+    line-height: 22px;
+    cursor: pointer;
+    font-size: 87.5%;
+    user-select: none;
+    color: $color-black;
+    font-size: 13px;
+
+    .CheckBoxMark {
+      position: absolute;
+      height: 18px;
+      width: 18px;
+      background-color: $color-white;
+      border: 1px solid $color-black;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+
+      &:after {
+        left: 5px;
+        top: 1px;
+        width: 4px;
+        height: 9px;
+        border: solid $color-white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+        content: "";
+        position: absolute;
+        display: none;
+      }
+    }
+
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+
+      &:checked ~ .CheckBoxMark {
+        background-color: $color-black;
+
+        &:after {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .CheckBoxText {
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: 500;
+  }
+}

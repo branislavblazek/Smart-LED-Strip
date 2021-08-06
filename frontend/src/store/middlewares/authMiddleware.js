@@ -32,9 +32,9 @@ const authMiddleware = store => next => action => {
         .then(res => {
           store.dispatch({
             type: AUTH_ACTIONS.LOGIN_SUCCESS,
-            payload: { token: res.token || 'ahoj123' },
+            payload: { token: res.token },
           });
-          setCookie(XApi, res.token || 'ahoj123');
+          setCookie(XApi, res.token);
         })
         .catch(() => {
           store.dispatch({ type: AUTH_ACTIONS.LOGIN_ERROR });

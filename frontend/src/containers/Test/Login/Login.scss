@@ -6,7 +6,7 @@
     position: relative;
 
     .LoginWindow {
-        width: 50%;
+        width: 600px;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -34,6 +34,16 @@
 
         .PinPad {
             margin: 40px auto 0 auto;
+        }
+    }
+}
+
+@media (max-width: $breakpoint-mobiles) {
+    .Login {
+        height: 80vh;
+
+        .LoginWindow {
+            width: 460px;
         }
     }
 }

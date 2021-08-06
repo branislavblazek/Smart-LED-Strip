@@ -17,6 +17,7 @@
         cursor: pointer;
         background-color: $color-seal;
         transition: background-color .4s;
+        outline: none;
 
         &.active,
         &:hover {

@@ -8,6 +8,7 @@ export const AUTH_ACTIONS = {
     LOGIN_SUCCESS: 'auth/LOGIN_SUCCESS',
     LOGIN_ERROR: 'auth/LOGIN_ERROR',
     UPDATE_PIN: 'auth/UPDATE_PIN',
+    RESET_STATE: 'auth/RESET_STATE',
 };
 
 export const APP_ACTIONS = {

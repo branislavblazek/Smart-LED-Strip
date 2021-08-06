@@ -1,8 +1,8 @@
 const express = require('express');
-require('dotenv').config()
 const { ERROR } = require('./messages');
 const { requestLog } = require('./logger');
 const { sendRequest } = require('./utils/requestUtils');
+require('dotenv').config()
 
 const app = express();
 

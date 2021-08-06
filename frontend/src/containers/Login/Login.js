@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import PinPad from '../../../components/PinPad/PinPad';
-import { CHAR_TYPES } from '../../../constants';
-import { AUTH_ACTIONS } from '../../../store/actions';
+import PinPad from '../../components/PinPad/PinPad';
+import { CHAR_TYPES } from '../../constants';
+import { AUTH_ACTIONS } from '../../store/actions';
 import './Login.scss';
 
 const Login = () => {

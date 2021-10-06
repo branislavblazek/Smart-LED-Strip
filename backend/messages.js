@@ -12,4 +12,7 @@ module.exports = {
         LOGIN: 'Problem with Login!',
         NOT_FOUND: 'Not found!',
     },
+    INFO: {
+        EXPIRATION: 'Date when token expires.',
+    }
 };

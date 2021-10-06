@@ -18,17 +18,25 @@ const setToken = token => {
     });
 };
 
-const checkToken = token => {
+const getTimestampByToken = token => {
     const tokens = getTokens();
-    const validToken = tokens.find(item => {
-        const [timestamp, tkn] = item.split(': ');
-        if (tkn === token) {
-            const now = Date.now();
-            const withExp = parseInt(timestamp) + parseInt(process.env.TOKEN_EXPIRATION * 1000);
-            return now <= withExp;
-        };
-    });
+    const concreteToken = tokens.find(item => {
+        const tkn = item.split(': ')[1];
+        return tkn === token;
+    })
+    if (!concreteToken) return [null, null];
+
+    return parseInt(concreteToken.split(': ')[0]);
+}
+
+const checkConcreteToken = token => {
+    const timestamp = getTimestampByToken(token);
+
+    const now = Date.now();
+    const withExp = parseInt(timestamp) + parseInt(process.env.TOKEN_EXPIRATION * 1000);
+    return now <= withExp;
+
     return !!validToken;
 }
 
-module.exports = { generateToken, setToken, checkToken };
+module.exports = { generateToken, setToken, getTimestampByToken, checkConcreteToken };

@@ -1,0 +1,38 @@
+API Services:
+
+LOGIN:
+    POST /api/login
+    body:
+    {
+        "pin": 0000<int>
+    }
+    ==> 
+    {
+        "message": "Login was successful!",
+        "token": kuf6m40pcux9u4dw62<str>,
+        "expiresIn": "7200"<str>
+    }
+    ..............................................................................
+    GET /api/login
+    headers:
+    {
+        x-api: kuf6m40pcux9u4dw62<str>
+    }
+    ==>
+    {
+        "message": "The token is (in)valid!"
+    }
+    ..............................................................................
+    GET /api/login/expiration
+    headers:
+    {
+        x-api: kuf6m40pcux9u4dw62<str>
+    }
+    ==>
+    {
+        "message": "Date when token expires.",
+        "expirationTimestamp": 1633512053977<int>,
+        "expirationDate": "06.10.2021 11:20:53"<str>
+    }
+    ..............................................................................
+

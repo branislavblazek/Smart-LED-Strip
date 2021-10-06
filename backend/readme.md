@@ -1,6 +1,7 @@
 API Services:
 
 LOGIN:
+
     POST /api/login
     body:
     {
@@ -8,11 +9,12 @@ LOGIN:
     }
     ==> 
     {
-        "message": "Login was successful!",
+        "message": "Login was successful!"<str>,
         "token": kuf6m40pcux9u4dw62<str>,
         "expiresIn": "7200"<str>
     }
-    ..............................................................................
+..............................................................................
+    
     GET /api/login
     headers:
     {
@@ -20,9 +22,10 @@ LOGIN:
     }
     ==>
     {
-        "message": "The token is (in)valid!"
+        "message": "The token is (in)valid!"<str>
     }
-    ..............................................................................
+..............................................................................
+    
     GET /api/login/expiration
     headers:
     {
@@ -30,9 +33,9 @@ LOGIN:
     }
     ==>
     {
-        "message": "Date when token expires.",
+        "message": "Date when token expires."<str>,
         "expirationTimestamp": 1633512053977<int>,
         "expirationDate": "06.10.2021 11:20:53"<str>
     }
-    ..............................................................................
+..............................................................................
 

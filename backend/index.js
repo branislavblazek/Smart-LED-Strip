@@ -2,6 +2,7 @@ const express = require('express');
 const { ERROR } = require('./messages');
 const { requestLog } = require('./logger');
 const { sendRequest } = require('./utils/requestUtils');
+const { isLoggedIn } = require('./routes/auth');
 require('dotenv').config()
 
 const app = express();
@@ -26,5 +27,6 @@ app.use((err, req, res, next) => {
 app.use(requestLog);
 
 app.use('/api/login', require('./routes/login'));
+app.use('/api/control', isLoggedIn, require('./routes/control'));
 
 app.use((req, res) => sendRequest(res.status(404), ERROR.NOT_FOUND));

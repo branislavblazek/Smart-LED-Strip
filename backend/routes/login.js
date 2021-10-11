@@ -1,10 +1,10 @@
 const express = require('express');
+const router = express.Router();
 const { SUCCESSFUL, ERROR, INFO } = require('../messages');
 const { generateToken, setToken, checkConcreteToken, getTimestampByToken } = require('../utils/tokenUtils');
 const { X_API } = require('../constants');
 const { sendRequest } = require('../utils/requestUtils');
 const { getDateFromTimestamp } = require('../utils/timeUtils');
-const router = express.Router();
 require('dotenv').config()
 
 router.post('', (req, res) => {

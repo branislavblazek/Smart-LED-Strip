@@ -11,8 +11,13 @@ module.exports = {
         WRITE_TOKEN: 'Unexpected problem with writing token!',
         LOGIN: 'Problem with Login!',
         NOT_FOUND: 'Not found!',
+        UNAUTHORIZED: 'Unauthorized user!',
     },
     INFO: {
-        EXPIRATION: 'Date when token expires.',
+        EXPIRATION: 'Token has been verified!',
+    },
+    CONTROL: {
+        GET: 'Successful info about controls!',
+        POST: 'Successful update of controls!',
     }
 };

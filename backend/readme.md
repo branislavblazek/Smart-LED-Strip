@@ -1,4 +1,9 @@
-API Services:
+### SETUP:
+Create `AppData` folder in root. Into this folder create empty file `tokens` and folder `log`.
+Run `npm i`
+And after successful install run `npm start` (or `nodemon start`)
+
+### API Services:
 
 LOGIN:
 

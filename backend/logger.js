@@ -1,15 +1,19 @@
-const { getCurrentDate } = require("./utils/timeUtils");
+const fs = require('fs');
+const { LOG_SOURCE, LOG_PATH } = require('./constants');
+const { getCurrentDateTime, getDateForLogFile } = require("./utils/timeUtils");
 
-const requestLog = (req, res, next) => {
-    const date = getCurrentDate()
-    console.log(`${date}.: ${req.method} ${req.path}`);
-    if (Object.keys(req.body).length) console.log(req.body);
+const writeLog = (source, heading, description) => {
+    const logFilename = LOG_PATH.replace('.txt', `${getDateForLogFile()}.txt`);
+    const date = getCurrentDateTime();
+    fs.appendFileSync(logFilename, `${date}: ${source} - ${heading}\n`)
+    fs.appendFileSync(logFilename, `\t${description}\n`);
+}
+
+const logRequest = (req, _, next) => {
+    writeLog(LOG_SOURCE.REQUEST, `${req.method} ${req.path}`, JSON.stringify(req.body) || null)
     next();
 }
 
-const responseLog = message => {
-    const date = getCurrentDate();
-    console.log(`${date}: >> ${message}`);
-}
+const responseLog = message => writeLog(LOG_SOURCE.RESPONSE, message);
 
-module.exports = { requestLog, responseLog };
+module.exports = { logRequest, writeLog, responseLog };

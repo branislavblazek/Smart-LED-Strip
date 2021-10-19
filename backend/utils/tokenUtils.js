@@ -1,17 +1,20 @@
 const fs = require('fs');
+const { TOKEN_PATH } = require('../constants');
+
+const randomString = () => Math.random().toString(36).substr(2);
 
 const generateToken = () => {
-    return Date.now().toString(36) + Math.random().toString(36).substr(2);
+    return randomString() + Date.now().toString(36) + randomString();
 }
 
 const getTokens = () => {
-    return fs.readFileSync('./tokens', { encoding: 'utf8' }).trim().split(/\r?\n/);
+    return fs.readFileSync(TOKEN_PATH, { encoding: 'utf8' }).trim().split(/\r?\n/);
 };
 
 const setToken = token => {
     return new Promise((resolve, reject) => {
         const time = Date.now();
-        fs.appendFile('./tokens', `${time}: ${token}\n`, err => {
+        fs.appendFile(TOKEN_PATH, `${time}: ${token}\n`, err => {
             if (err) return reject(err);
             resolve();
         });
@@ -35,8 +38,6 @@ const checkConcreteToken = token => {
     const now = Date.now();
     const withExp = parseInt(timestamp) + parseInt(process.env.TOKEN_EXPIRATION * 1000);
     return now <= withExp;
-
-    return !!validToken;
 }
 
 module.exports = { generateToken, setToken, getTimestampByToken, checkConcreteToken };

@@ -1,7 +1,7 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PinPad from '../../components/PinPad/PinPad';
-import { CHAR_TYPES } from '../../constants';
+import { BACKGROUNDS, CHAR_TYPES } from '../../constants';
 import { AUTH_ACTIONS } from '../../store/actions';
 import './Login.scss';
 
@@ -9,6 +9,12 @@ const Login = () => {
   const dispatch = useDispatch();
   const { pin, isLoading, isError } = useSelector(state => state.auth);
   const { PIN_LENGTH } = useSelector(state => state.env);
+  const [backgroundIndex, setBackgroundIndex] = useState(0);
+
+  const updateBackgroundIndex = useCallback(() => {
+    if (backgroundIndex + 1 >= BACKGROUNDS.length) setBackgroundIndex(0);
+    else setBackgroundIndex(backgroundIndex + 1);
+  }, [backgroundIndex, setBackgroundIndex]);
 
   const handleChange = useCallback(newPin => {
     if (!newPin) {
@@ -19,7 +25,7 @@ const Login = () => {
       return;
     }
 
-    if (isError) dispatch({ type: AUTH_ACTIONS.RESET_STATE });
+    updateBackgroundIndex();
 
     const value = pin ? `${pin}${newPin}` : newPin;
     if (value.length > PIN_LENGTH) return;
@@ -28,7 +34,7 @@ const Login = () => {
       type: AUTH_ACTIONS.UPDATE_PIN,
       payload: { pin: value },
     });
-  }, [dispatch, pin, PIN_LENGTH, isError]);
+  }, [dispatch, pin, PIN_LENGTH, updateBackgroundIndex]);
 
   const handleSubmit = useCallback(() => {
     dispatch({
@@ -71,6 +77,7 @@ const Login = () => {
       onKeyPress={handleInput}
       onClick={() => {}}
       role="button"
+      style={{ background: BACKGROUNDS[backgroundIndex] }}
       tabIndex={0}
     >
       <div className="LoginWindow">

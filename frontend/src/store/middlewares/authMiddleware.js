@@ -27,7 +27,7 @@ const authMiddleware = store => next => action => {
     case AUTH_ACTIONS.LOGIN: {
       postRequest({
         path: authLinks.login(),
-        options: { authorization: true },
+        body: { pin: +action.payload.pin },
       })
         .then(res => {
           store.dispatch({

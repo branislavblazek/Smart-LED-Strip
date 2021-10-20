@@ -4,7 +4,7 @@ const { CONTROL } = require('../messages');
 const { sendRequest } = require('../utils/requestUtils');
 
 router.get('', (req, res) => {
-    sendRequest(res, CONTROL.GET, { 'controls_status': [{ 'control1': true }] })
+    sendRequest(res, CONTROL.GET, { 'control_status': [{ 'control1': true }] })
 })
 
 router.post('', (req, res) => {

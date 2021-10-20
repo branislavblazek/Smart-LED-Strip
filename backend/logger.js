@@ -6,11 +6,11 @@ const writeLog = (source, heading, description) => {
     const logFilename = LOG_PATH.replace('.txt', `${getDateForLogFile()}.txt`);
     const date = getCurrentDateTime();
     fs.appendFileSync(logFilename, `${date}: ${source} - ${heading}\n`)
-    fs.appendFileSync(logFilename, `\t${description}\n`);
+    if (description) fs.appendFileSync(logFilename, `\t${description}\n`);
 }
 
 const logRequest = (req, _, next) => {
-    writeLog(LOG_SOURCE.REQUEST, `${req.method} ${req.path}`, JSON.stringify(req.body) || null)
+    writeLog(LOG_SOURCE.REQUEST, `${req.method} ${req.path}`, req.method !== 'GET' ? JSON.stringify(req.body) : null)
     next();
 }
 

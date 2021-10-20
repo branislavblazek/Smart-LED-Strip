@@ -5,8 +5,8 @@ import { getAppEnv, getToken } from './store/selectors/appSelectors';
 import { ENVIRONMENT } from './apiLinks';
 import { APP_ACTIONS, AUTH_ACTIONS } from './store/actions';
 import { ENV_FILE_NAME } from './constants';
-import Login from './containers/Test/Login/Login';
-import Test from './containers/Test/Test';
+import Login from './containers/Login/Login';
+import Dashboard from './containers/Dashboard/Dashboard';
 import './App.scss';
 
 const App = () => {
@@ -27,17 +27,21 @@ const App = () => {
     return null;
   }, [dispatch, env, token]);
 
-  const renderLogin = () => (
-    <Switch>
-      <Route path="/login/" component={Login} />
-      <Redirect to="/login/" />
-    </Switch>
-  );
+  const renderLogin = () => {
+    if (token) return null;
+
+    return (
+      <Switch>
+        <Route path="/login/" component={Login} />
+        <Redirect to="/login/" />
+      </Switch>
+    );
+  };
 
   const renderApp = () => (
     <Switch>
-      <Route path="/dashboard/" component={Test} />
-      <Redirect to="/dashbord/" />
+      <Route path="/dashboard/" component={Dashboard} />
+      <Redirect to="/dashboard/" />
     </Switch>
   );
 

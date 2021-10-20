@@ -13,3 +13,5 @@ export const CHAR_TYPES = {
     57: '9',
     13: 'Enter',
 };
+
+export const BACKGROUNDS = ['#91e8df', '#9ffff5', '#8EFFDD', '#7CFFC4', '#6ABEA7', '#64948D', '#5E6973'];

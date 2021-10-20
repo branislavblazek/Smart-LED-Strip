@@ -10,10 +10,10 @@
 
     .PinKey {
         position: relative;
-        border: 1px solid $color-white;
+        border: 1px solid $color-black;
         aspect-ratio: 1;
         border-radius: 50%;
-        color: $color-white;
+        color: $color-black;
         cursor: pointer;
         background-color: $color-seal;
         transition: background-color .4s;

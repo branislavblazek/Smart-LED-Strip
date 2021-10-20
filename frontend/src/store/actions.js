@@ -11,6 +11,12 @@ export const AUTH_ACTIONS = {
     RESET_STATE: 'auth/RESET_STATE',
 };
 
+export const CONTROL_ACTIONS = {
+    GET_CONTROL: 'control/GET_CONTROL',
+    GET_CONTROL_SUCCESS: 'control/GET_CONTROL_SUCCESS',
+    GET_CONTROL_ERROR: 'control/GET_CONTROL_ERROR',
+};
+
 export const APP_ACTIONS = {
     SET_ENV: 'app/SET_ENV',
     LOAD_ENV: 'app/LOAD_ENV',

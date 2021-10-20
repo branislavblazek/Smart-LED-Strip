@@ -17,7 +17,7 @@ module.exports = {
         EXPIRATION: 'Token has been verified!',
     },
     CONTROL: {
-        GET: 'Successful info about controls!',
-        POST: 'Successful update of controls!',
+        GET: 'Successful info about control!',
+        POST: 'Successful update of control!',
     }
 };

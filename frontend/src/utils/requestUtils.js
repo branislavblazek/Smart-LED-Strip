@@ -1,7 +1,8 @@
+/* eslint-disable max-lines */
 import { ENVIRONMENT } from '../apiLinks';
-import { getAppEnv } from '../store/selectors/appSelectors';
+import { getAppEnv, getToken } from '../store/selectors/appSelectors';
 
-const XAPIKEY = 'X-API-Key';
+const XAPI = 'X-API';
 
 const getApiUrl = store => path => {
   const env = getAppEnv(store.getState());
@@ -10,9 +11,11 @@ const getApiUrl = store => path => {
 
 // eslint-disable-next-line complexity
 async function request(apiUrl, { authToken, method, body } = {}) {
-  const headers = {};
+  const headers = {
+    'Content-type': 'application/json',
+  };
 
-  if (authToken) headers[XAPIKEY] = authToken;
+  if (authToken) headers[XAPI] = authToken;
 
   const response = await fetch(apiUrl, {
     headers,
@@ -57,9 +60,9 @@ const requestTypesWithBody = [putRequest, postRequest, getRequestHeader];
 const connectRequest = (requestFunction) => store => ({
   path, body, options,
 }) => {
-  const authToken = options?.authorization
-    ? getAppEnv(store.getState()).API_KEY
-    : options.authToken;
+  const authToken = options?.authToken
+    ? options.authToken
+    : getToken(store.getState());
   const apiUrl = getApiUrl(store)(path);
   const args = (requestTypesWithBody.includes(requestFunction))
     ? [apiUrl, body, { ...options, authToken }]

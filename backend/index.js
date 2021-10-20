@@ -3,6 +3,7 @@ const { ERROR } = require('./messages');
 const { logRequest } = require('./logger');
 const { sendRequest } = require('./utils/requestUtils');
 const { isLoggedIn } = require('./routes/auth');
+const cors = require("cors")
 require('dotenv').config()
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(express.json({
     strict: true,
     type: 'application/json'
 }));
+app.use(cors())
 
 app.use((err, req, res, next) => {
     if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
@@ -25,7 +27,6 @@ app.use((err, req, res, next) => {
 });
 
 app.use(logRequest);
-
 app.use('/api/login', require('./routes/login'));
 app.use('/api/control', isLoggedIn, require('./routes/control'));
 
